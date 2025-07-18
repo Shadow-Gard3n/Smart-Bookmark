@@ -1,41 +1,316 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-body { 
-    font-family: sans-serif; 
-    padding: 10px; 
-    width: 400px;  /* wider popup */
-    height: 500px; /* fixed smaller height */
-    overflow-y: auto; /* scroll if needed */
+body {
+  width: 360px;
+  min-height: 400px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #e0e6ed;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 20px;
+  overflow-x: hidden;
 }
-button { 
-    padding: 8px 12px; 
-    margin-top: 10px; 
-    cursor: pointer; 
-    display: block; 
-}
-h3 { margin-top: 20px; }
-ul { 
-    list-style: none; 
-    padding: 0; 
-    max-height: 200px;  /* limit individual list height */
-    overflow-y: auto; 
-}
-li { margin-bottom: 5px; }
-a { 
-    text-decoration: none; 
-    color: #1a73e8; 
-    word-break: break-word; 
-}
-a:hover { text-decoration: underline; }
 
-.notification {
-  display: none;
-  background-color: #d1fae5; /* green tint */
-  color: #065f46;            /* dark green text */
-  padding: 8px 12px;
-  margin-top: 10px;
-  border-radius: 6px;
-  font-size: 0.9em;
-  transition: opacity 0.5s;
+/* Main title */
+h2 {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
   text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
 }
 
+/* Section headings */
+h3 {
+  color: #64b5f6;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  margin-top: 20px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid rgba(100, 181, 246, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h3:first-of-type {
+  margin-top: 0;
+}
+
+/* Bookmark lists */
+ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+li {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(100, 181, 246, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Bookmark links */
+a {
+  color: #e0e6ed;
+  text-decoration: none;
+  display: block;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+a:hover {
+  color: #64b5f6;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+button:last-child {
+  margin-bottom: 0;
+}
+
+/* Button ripple effect */
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Save button specific styling */
+#saveButton {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+#saveButton:hover {
+  background: linear-gradient(135deg, #45a049 0%, #4caf50 100%);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* View button specific styling */
+#viewButton {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+#viewButton:hover {
+  background: linear-gradient(135deg, #f57c00 0%, #ff9800 100%);
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification::before {
+  content: '✓';
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+/* Empty state styling */
+li:contains("No bookmarks yet.") {
+  color: #9e9e9e;
+  font-style: italic;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 181, 246, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 181, 246, 0.5);
+}
+
+/* Usage count styling */
+li a:contains("(") {
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 300px) {
+  body {
+    width: 280px;
+    padding: 16px;
+  }
+  
+  h2 {
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Apply animations */
+body {
+  animation: fadeIn 0.3s ease;
+}
+
+li {
+  animation: slideIn 0.3s ease;
+}
+
+li:nth-child(1) { animation-delay: 0.1s; }
+li:nth-child(2) { animation-delay: 0.2s; }
+li:nth-child(3) { animation-delay: 0.3s; }
+
+/* Focus styles for accessibility */
+button:focus {
+  outline: 2px solid #64b5f6;
+  outline-offset: 2px;
+}
+
+a:focus {
+  outline: 2px solid #64b5f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  body {
+    background: #000000;
+    color: #ffffff;
+  }
+  
+  li {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  h3 {
+    color: #ffffff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

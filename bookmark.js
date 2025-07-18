@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // save button
       const saveButton = document.createElement("button");
-      saveButton.textContent = "💾";
+      saveButton.textContent = "Save";
       saveButton.title = "Save note";
       saveButton.style.marginLeft = "5px";
       saveButton.addEventListener("click", () => {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // remove button
       const removeButton = document.createElement("button");
-      removeButton.textContent = "🗑️";
+      removeButton.textContent = "Remove";
       removeButton.title = "Remove bookmark";
       removeButton.style.marginLeft = "5px";
       removeButton.addEventListener("click", () => {

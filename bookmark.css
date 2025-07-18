@@ -1,0 +1,217 @@
+/* Dark Theme CSS for Smart Bookmarks */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+h2 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+  border-bottom: 2px solid #333333;
+  padding-bottom: 12px;
+}
+
+#bookmarkList {
+  list-style: none;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#bookmarkList li {
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  transition: all 0.2s ease;
+}
+
+#bookmarkList li:hover {
+  background-color: #353535;
+  border-color: #555555;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Link styles */
+#bookmarkList a {
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 500;
+  flex: 1;
+  min-width: 200px;
+  transition: color 0.2s ease;
+}
+
+#bookmarkList a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+#bookmarkList a:visited {
+  color: #a78bfa;
+}
+
+/* Date span styles */
+#bookmarkList span {
+  color: #9ca3af !important;
+  font-size: 0.85rem !important;
+  white-space: nowrap;
+}
+
+/* Input styles */
+#bookmarkList input[type="text"] {
+  background-color: #404040 !important;
+  border: 1px solid #555555 !important;
+  border-radius: 4px !important;
+  padding: 6px 10px !important;
+  color: #e0e0e0 !important;
+  font-size: 0.9rem !important;
+  width: 200px !important;
+  margin-left: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+#bookmarkList input[type="text"]:focus {
+  outline: none !important;
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2) !important;
+}
+
+#bookmarkList input[type="text"]::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Button styles */
+#bookmarkList button {
+  background-color: #374151 !important;
+  border: 1px solid #555555 !important;
+  border-radius: 4px !important;
+  padding: 6px 10px !important;
+  color: #e0e0e0 !important;
+  font-size: 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin-left: 0 !important;
+  min-width: 36px !important;
+}
+
+#bookmarkList button:hover {
+  background-color: #4b5563 !important;
+  border-color: #6b7280 !important;
+  transform: translateY(-1px) !important;
+}
+
+#bookmarkList button:active {
+  transform: translateY(0) !important;
+}
+
+/* Save button specific styling */
+#bookmarkList button[title="Save note"] {
+  background-color: #065f46 !important;
+  border-color: #047857 !important;
+}
+
+#bookmarkList button[title="Save note"]:hover {
+  background-color: #047857 !important;
+  border-color: #059669 !important;
+}
+
+/* Remove button specific styling */
+#bookmarkList button[title="Remove bookmark"] {
+  background-color: #7f1d1d !important;
+  border-color: #991b1b !important;
+}
+
+#bookmarkList button[title="Remove bookmark"]:hover {
+  background-color: #991b1b !important;
+  border-color: #b91c1c !important;
+}
+
+/* Empty state message */
+#bookmarkList p {
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+  padding: 40px;
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  border: 1px solid #404040;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  #bookmarkList li {
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  #bookmarkList a {
+    min-width: auto;
+  }
+  
+  #bookmarkList input[type="text"] {
+    width: 100% !important;
+  }
+  
+  #bookmarkList span {
+    order: 1;
+  }
+  
+  #bookmarkList input[type="text"] {
+    order: 2;
+  }
+  
+  #bookmarkList button {
+    order: 3;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
