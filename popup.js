@@ -1,25 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const snippetList = document.getElementById("snippetList");
-    chrome.storage.local.get({ snippets: [] }, (result) => {
-        result.snippets.forEach((snippet, index) => { 
-            const li = document.createElement("li");
-            li.textContent = snippet.substring(0, 50) + "...";
+// Save bookmarks
+document.getElementById("saveButton").addEventListener("click", () => {
+  chrome.runtime.sendMessage({ action: "saveBookmark" }, (response) => {
+    if (response && response.success) {
+      alert("Bookmark saved successfully!");
+    }
+  });
+});
 
-            const deleteBtn = document.createElement("button");
-            deleteBtn.textContent = "❌";
-            deleteBtn.style.marginLeft = "10px";
-            deleteBtn.addEventListener("click", () => {
-                chrome.storage.local.get({ snippets: [] }, (res) => {
-                    const updatedSnippets = res.snippets;
-                    updatedSnippets.splice(index, 1); 
-                    chrome.storage.local.set({ snippets: updatedSnippets }, () => {
-                        location.reload();
-                    });
-                });
-            });
-
-            li.appendChild(deleteBtn);
-            snippetList.appendChild(li);
-        });
-    });
+// view bookmarks 
+document.getElementById("viewButton").addEventListener("click", () => {
+  chrome.tabs.create({ url: chrome.runtime.getURL("bookmark.html") });
 });

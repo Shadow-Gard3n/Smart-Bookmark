@@ -2,14 +2,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Saved Snippets</title>
-  <script src="popup.js"></script>
+  <title>Smart Bookmark Assistant</title>
+  <style>
+    body { font-family: sans-serif; padding: 10px; }
+    button { padding: 8px 12px; margin-top: 10px; cursor: pointer; display: block; }
+  </style>
 </head>
 <body>
-  <h2>Saved Snippets</h2>
-  <ul id="snippetList"></ul>
+  <h2>Smart Bookmark Assistant</h2>
+  <p>Click below to save this page to your Smart Bookmarks.</p>
+  <button id="saveButton">Save Bookmark</button>
+  <button id="viewButton">View All Bookmarks</button>
 
-  <button>Push to Gist</button>
-
+  <script src="popup.js"></script>
 </body>
 </html>
