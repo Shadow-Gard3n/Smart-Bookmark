@@ -6,7 +6,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         url: tab.url,
         title: tab.title,
         time: new Date().toISOString(),
-        note: ""
+        note: "",
+        usageCount: 0
       };
 
       chrome.storage.local.get({ bookmarks: [] }, (data) => {

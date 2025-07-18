@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Smart Bookmark Assistant</title>
-  <style>
-    body { font-family: sans-serif; padding: 10px; }
-    button { padding: 8px 12px; margin-top: 10px; cursor: pointer; display: block; }
-  </style>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <h2>Smart Bookmark Assistant</h2>
+
+  <h3>📌 Latest Bookmarks</h3>
+  <ul id="latestBookmarks"></ul>
+
+  <h3>🔥 Most Used Bookmarks</h3>
+  <ul id="mostUsedBookmarks"></ul>
 
   <button id="saveButton">Save Bookmark</button>
   <button id="viewButton">View All Bookmarks</button>
