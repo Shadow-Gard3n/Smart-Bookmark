@@ -2,7 +2,17 @@
 document.getElementById("saveButton").addEventListener("click", () => {
   chrome.runtime.sendMessage({ action: "saveBookmark" }, (response) => {
     if (response && response.success) {
-      alert("Bookmark saved successfully!");
+        const notification = document.getElementById("notification");
+        notification.style.display = "block";
+        notification.style.opacity = "1";
+
+        setTimeout(() => {
+            notification.style.opacity = "0";
+            setTimeout(() => {
+                notification.style.display = "none";
+                location.reload();
+            }, 500);
+        }, 2000);
     }
   });
 });

@@ -26,3 +26,16 @@ a {
     word-break: break-word; 
 }
 a:hover { text-decoration: underline; }
+
+.notification {
+  display: none;
+  background-color: #d1fae5; /* green tint */
+  color: #065f46;            /* dark green text */
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  transition: opacity 0.5s;
+  text-align: center;
+}
+

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    bookmarks.forEach((bookmark, index) => {
+    bookmarks.forEach((bookmark) => {
       const li = document.createElement("li");
 
       // link
@@ -38,14 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
       saveButton.title = "Save note";
       saveButton.style.marginLeft = "5px";
       saveButton.addEventListener("click", () => {
-        chrome.storage.local.get({ bookmarks: [] }, (data) => {
-          const bookmarks = data.bookmarks;
-          bookmarks[index].note = noteInput.value;
-          chrome.storage.local.set({ bookmarks }, () => {
-            alert("Note saved!");
+          chrome.storage.local.get({ bookmarks: [] }, (data) => {
+              const bookmarks = data.bookmarks;
+              const targetIndex = bookmarks.findIndex(b => b.url === bookmark.url);
+              if (targetIndex !== -1) {
+                  bookmarks[targetIndex].note = noteInput.value;
+                  chrome.storage.local.set({ bookmarks }, () => {
+                      console.log("Note saved!");
+                  });
+              }
           });
-        });
       });
+
 
 
       // remove button
@@ -54,16 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
       removeButton.title = "Remove bookmark";
       removeButton.style.marginLeft = "5px";
       removeButton.addEventListener("click", () => {
-        if (confirm("Are you sure you want to delete this bookmark?")) {
-          chrome.storage.local.get({ bookmarks: [] }, (data) => {
-            let bookmarks = data.bookmarks;
-            bookmarks.splice(index, 1);
-            chrome.storage.local.set({ bookmarks }, () => {
-              location.reload();
+          if (confirm("Are you sure you want to delete this bookmark?")) {
+            chrome.storage.local.get({ bookmarks: [] }, (data) => {
+              let bookmarks = data.bookmarks;
+              bookmarks = bookmarks.filter(b => b.url !== bookmark.url);
+              chrome.storage.local.set({ bookmarks }, () => {
+                location.reload();
+              });
             });
-          });
-        }
+          }
       });
+
 
       li.appendChild(link);
       li.appendChild(date);
