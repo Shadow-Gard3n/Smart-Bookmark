@@ -5,7 +5,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const bookmark = {
         url: tab.url,
         title: tab.title,
-        time: new Date().toISOString()
+        time: new Date().toISOString(),
+        note: ""
       };
 
       chrome.storage.local.get({ bookmarks: [] }, (data) => {
