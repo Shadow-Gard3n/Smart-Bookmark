@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Code Snippet Saver",
+  "version": "1.0",
+  "description": "Save highlighted code snippets from websites.",
+  "permissions": ["activeTab", "storage", "contextMenus"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
